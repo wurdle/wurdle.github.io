@@ -1,11 +1,13 @@
 <html>
 <head>
 <style>
+	input[type="text"][disabled] { color: black; }
 	.lettertd { border:solid; width:50px; height:50px; border-color:black; float:left; margin:3px}
 	.myInput { width:100%; height:100%; font-size:30; text-align:center; border:none;}
-	.green {background-color:green;color:white}
-	.yellow {background-color:orange;color:white}
-	.grey {background-color:grey;color:white}
+	.green {background-color:green;color:white !important;}
+	.yellow {background-color:orange;color:white !important;}
+	.grey {background-color:grey;color:white !important;}
+	
 </style>
 
 
@@ -126,7 +128,7 @@
 
 				document.getElementById("in" + t.toString() + i.toString()).classList.add("green");
 				document.getElementById("in" + t.toString() + i.toString()).setAttribute("disabled","thisDoesNothing");
-				document.getElementById("in" + (t+1).toString() + i.toString()).removeAttribute("disabled");
+				//document.getElementById("in" + (t+1).toString() + i.toString()).removeAttribute("disabled");
 				// green
 			}
 			else if (matchMask[i] == 2)
@@ -134,7 +136,7 @@
 
 				document.getElementById("in" + t.toString() + i.toString()).classList.add("yellow");
 				document.getElementById("in" + t.toString() + i.toString()).setAttribute("disabled","thisDoesNothing");
-				document.getElementById("in" + (t+1).toString() + i.toString()).removeAttribute("disabled");
+				//document.getElementById("in" + (t+1).toString() + i.toString()).removeAttribute("disabled");
 				// yellow
 			}
 			else 
@@ -142,7 +144,7 @@
 
 				document.getElementById("in" + t.toString() + i.toString()).classList.add("grey");
 				document.getElementById("in" + t.toString() + i.toString()).setAttribute("disabled","thisDoesNothing");
-				document.getElementById("in" + (t+1).toString() + i.toString()).removeAttribute("disabled");
+				//document.getElementById("in" + (t+1).toString() + i.toString()).removeAttribute("disabled");
 				// grey
 			}
 		}
@@ -164,8 +166,38 @@
 		if(event.keyCode == 13) {
 			testWord();
 		}
+		
+		if(event.keyCode >= 65 && event.keyCode <= 90) {
+			console.log("putting " + String.fromCharCode(event.keyCode) + " into slot #" + firstUnusedInput().toString());
+			document.getElementById("in" + currentTry.toString() + firstUnusedInput().toString()).value = String.fromCharCode(event.keyCode);
+		}
+		
+		if(event.keyCode == 8 || event.keyCode == 46) {
+			document.getElementById("in" + currentTry.toString() + lastUsedInput().toString()).value = "";
+		}
 	});
 	
+	function firstUnusedInput()
+	{
+		for (var i = 0; i<5;i++)
+		{
+			if (document.getElementById("in" + currentTry.toString() + i.toString()).value == "")
+			{
+				return i;
+			}
+		}
+	}
+	
+	function lastUsedInput()
+	{
+		for (var i = 4; i>-1;i--)
+		{
+			if (document.getElementById("in" + currentTry.toString() + i.toString()).value != "")
+			{
+				return i;
+			}
+		}
+	}
 
 	function wait(ms){
 	   var start = new Date().getTime();
@@ -193,46 +225,46 @@
 
 <table>
 <tr>
-<td id="10" class="lettertd"><input type="text" class="myInput" id="in10" maxlength="1" text=""></input></td>
-<td id="11" class="lettertd"><input type="text" class="myInput" id="in11" maxlength="1" text=""></input></td>
-<td id="12" class="lettertd"><input type="text" class="myInput" id="in12" maxlength="1" text=""></input></td>
-<td id="13" class="lettertd"><input type="text" class="myInput" id="in13" maxlength="1" text=""></input></td>
-<td id="14" class="lettertd"><input type="text" class="myInput" id="in14" maxlength="1" text=""></input></td>
+<td id="10" class="lettertd"><input type="text" class="myInput" id="in10" maxLength="1" disabled text=""></input></td>
+<td id="11" class="lettertd"><input type="text" class="myInput" id="in11" maxLength="1" disabled text=""></input></td>
+<td id="12" class="lettertd"><input type="text" class="myInput" id="in12" maxLength="1" disabled text=""></input></td>
+<td id="13" class="lettertd"><input type="text" class="myInput" id="in13" maxLength="1" disabled text=""></input></td>
+<td id="14" class="lettertd"><input type="text" class="myInput" id="in14" maxLength="1" disabled text=""></input></td>
 </tr>
 <tr>
-<td id="20" class="lettertd"><input type="text" class="myInput" id="in20" maxlength="1" disabled text=""></input></td>
-<td id="21" class="lettertd"><input type="text" class="myInput" id="in21" maxlength="1" disabled text=""></input></td>
-<td id="22" class="lettertd"><input type="text" class="myInput" id="in22" maxlength="1" disabled text=""></input></td>
-<td id="23" class="lettertd"><input type="text" class="myInput" id="in23" maxlength="1" disabled text=""></input></td>
-<td id="24" class="lettertd"><input type="text" class="myInput" id="in24" maxlength="1" disabled text=""></input></td>
+<td id="20" class="lettertd"><input type="text" class="myInput" id="in20" maxLength="1" disabled text=""></input></td>
+<td id="21" class="lettertd"><input type="text" class="myInput" id="in21" maxLength="1" disabled text=""></input></td>
+<td id="22" class="lettertd"><input type="text" class="myInput" id="in22" maxLength="1" disabled text=""></input></td>
+<td id="23" class="lettertd"><input type="text" class="myInput" id="in23" maxLength="1" disabled text=""></input></td>
+<td id="24" class="lettertd"><input type="text" class="myInput" id="in24" maxLength="1" disabled text=""></input></td>
 </tr>
 <tr>
-<td id="30" class="lettertd"><input type="text" class="myInput" id="in30" maxlength="1" disabled text=""></input></td>
-<td id="31" class="lettertd"><input type="text" class="myInput" id="in31" maxlength="1" disabled text=""></input></td>
-<td id="32" class="lettertd"><input type="text" class="myInput" id="in32" maxlength="1" disabled text=""></input></td>
-<td id="33" class="lettertd"><input type="text" class="myInput" id="in33" maxlength="1" disabled text=""></input></td>
-<td id="34" class="lettertd"><input type="text" class="myInput" id="in34" maxlength="1" disabled text=""></input></td>
+<td id="30" class="lettertd"><input type="text" class="myInput" id="in30" maxLength="1" disabled text=""></input></td>
+<td id="31" class="lettertd"><input type="text" class="myInput" id="in31" maxLength="1" disabled text=""></input></td>
+<td id="32" class="lettertd"><input type="text" class="myInput" id="in32" maxLength="1" disabled text=""></input></td>
+<td id="33" class="lettertd"><input type="text" class="myInput" id="in33" maxLength="1" disabled text=""></input></td>
+<td id="34" class="lettertd"><input type="text" class="myInput" id="in34" maxLength="1" disabled text=""></input></td>
 </tr>
 <tr>
-<td id="40" class="lettertd"><input type="text" class="myInput" id="in40" maxlength="1" disabled text=""></input></td>
-<td id="41" class="lettertd"><input type="text" class="myInput" id="in41" maxlength="1" disabled text=""></input></td>
-<td id="42" class="lettertd"><input type="text" class="myInput" id="in42" maxlength="1" disabled text=""></input></td>
-<td id="43" class="lettertd"><input type="text" class="myInput" id="in43" maxlength="1" disabled text=""></input></td>
-<td id="44" class="lettertd"><input type="text" class="myInput" id="in44" maxlength="1" disabled text=""></input></td>
+<td id="40" class="lettertd"><input type="text" class="myInput" id="in40" maxLength="1" disabled text=""></input></td>
+<td id="41" class="lettertd"><input type="text" class="myInput" id="in41" maxLength="1" disabled text=""></input></td>
+<td id="42" class="lettertd"><input type="text" class="myInput" id="in42" maxLength="1" disabled text=""></input></td>
+<td id="43" class="lettertd"><input type="text" class="myInput" id="in43" maxLength="1" disabled text=""></input></td>
+<td id="44" class="lettertd"><input type="text" class="myInput" id="in44" maxLength="1" disabled text=""></input></td>
 </tr>
 <tr>
-<td id="50" class="lettertd"><input type="text" class="myInput" id="in50" maxlength="1" disabled text=""></input></td>
-<td id="51" class="lettertd"><input type="text" class="myInput" id="in51" maxlength="1" disabled text=""></input></td>
-<td id="52" class="lettertd"><input type="text" class="myInput" id="in52" maxlength="1" disabled text=""></input></td>
-<td id="53" class="lettertd"><input type="text" class="myInput" id="in53" maxlength="1" disabled text=""></input></td>
-<td id="54" class="lettertd"><input type="text" class="myInput" id="in54" maxlength="1" disabled text=""></input></td>
+<td id="50" class="lettertd"><input type="text" class="myInput" id="in50" maxLength="1" disabled text=""></input></td>
+<td id="51" class="lettertd"><input type="text" class="myInput" id="in51" maxLength="1" disabled text=""></input></td>
+<td id="52" class="lettertd"><input type="text" class="myInput" id="in52" maxLength="1" disabled text=""></input></td>
+<td id="53" class="lettertd"><input type="text" class="myInput" id="in53" maxLength="1" disabled text=""></input></td>
+<td id="54" class="lettertd"><input type="text" class="myInput" id="in54" maxLength="1" disabled text=""></input></td>
 </tr>
 <tr>
-<td id="60" class="lettertd"><input type="text" class="myInput" id="in60" maxlength="1" disabled text=""></input></td>
-<td id="61" class="lettertd"><input type="text" class="myInput" id="in61" maxlength="1" disabled text=""></input></td>
-<td id="62" class="lettertd"><input type="text" class="myInput" id="in62" maxlength="1" disabled text=""></input></td>
-<td id="63" class="lettertd"><input type="text" class="myInput" id="in63" maxlength="1" disabled text=""></input></td>
-<td id="64" class="lettertd"><input type="text" class="myInput" id="in64" maxlength="1" disabled text=""></input></td>
+<td id="60" class="lettertd"><input type="text" class="myInput" id="in60" maxLength="1" disabled text=""></input></td>
+<td id="61" class="lettertd"><input type="text" class="myInput" id="in61" maxLength="1" disabled text=""></input></td>
+<td id="62" class="lettertd"><input type="text" class="myInput" id="in62" maxLength="1" disabled text=""></input></td>
+<td id="63" class="lettertd"><input type="text" class="myInput" id="in63" maxLength="1" disabled text=""></input></td>
+<td id="64" class="lettertd"><input type="text" class="myInput" id="in64" maxLength="1" disabled text=""></input></td>
 </tr>
 </table>
 <div visibility="hidden" id="70"></div>
