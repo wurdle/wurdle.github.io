@@ -2,7 +2,7 @@
 <html>
 <head>
 <style>
-	input[type="text"][disabled] { color: black; font-size:30px}
+	input[type="text"][disabled] { color: black; font-size:30px !important}
 	.lettertd { border:solid; width:50px; height:50px; border-color:black; float:left; margin:3px}
 	.myInput { width:100%; height:100%; font-size:30; text-align:center; border:none;}
 	.green {background-color:green;color:white !important;}
@@ -35,6 +35,8 @@
 		}
 
 		pickWord();
+		document.getElementById("in84").focus();
+		setInterval(focusCatch, 500)
 	}
 
 	function testWord()
@@ -157,7 +159,21 @@
 
 	}
 
-	
+	function testKey(event) {
+		document.getElementById("in84").focus();
+		if(event.keyCode == 13) {
+			testWord();
+		}
+		
+		if(event.keyCode >= 65 && event.keyCode <= 90) {
+			console.log("2putting " + String.fromCharCode(event.keyCode) + " into slot #" + firstUnusedInput().toString());
+			document.getElementById("in" + currentTry.toString() + firstUnusedInput().toString()).value = String.fromCharCode(event.keyCode);
+		}
+		
+		if(event.keyCode == 8 || event.keyCode == 46) {
+			document.getElementById("in" + currentTry.toString() + lastUsedInput().toString()).value = "";
+		}
+	}
 	
 	
 	function replace(str, index, ch)
@@ -167,7 +183,7 @@
 		return new_str;
 	}
 	
-	document.addEventListener('keydown', function(event) {
+	/*document.addEventListener('keydown', function(event) {
 		document.getElementById("in84").focus();
 		if(event.keyCode == 13) {
 			testWord();
@@ -181,7 +197,7 @@
 		if(event.keyCode == 8 || event.keyCode == 46) {
 			document.getElementById("in" + currentTry.toString() + lastUsedInput().toString()).value = "";
 		}
-	});
+	}); //*/
 	
 	function firstUnusedInput()
 	{
@@ -223,6 +239,10 @@
 		console.log(wordle);
 	}
 
+	function focusCatch()
+	{
+		document.getElementById("in84").focus();
+	}
 
 </script>
 </head>
@@ -292,7 +312,7 @@
 <div visibility="hidden" id="in81"></div>
 <div visibility="hidden" id="in82"></div>
 <div visibility="hidden" id="in83"></div>
-<div visibility="hidden" class="nodiv"><input id="in84" class="notext"></input></div>
+<div visibility="hidden" class="nodiv"><input id="in84" class="notext" onkeydown="testKey(event, this)"></input></div>
 
 
 <button onClick="testWord()">Test Word</button>
