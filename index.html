@@ -2,14 +2,27 @@
 <html>
 <head>
 <style>
-	input[type="text"][disabled] { color: black; font-size:30px !important}
-	.lettertd { border:solid; width:50px; height:50px; border-color:black; float:left; margin:3px}
+	input[type="text"][disabled] { color: black; font-size:3vh !important}
+	.lettertd { border:solid; width:10vw;height:10vw; max-width:90px; max-height:90px; border-color:black; float:left; margin:0.2vw}
 	.myInput { width:100%; height:100%; font-size:30; text-align:center; border:none;}
 	.green {background-color:green;color:white !important;}
 	.yellow {background-color:orange;color:white !important;}
 	.grey {background-color:grey;color:white !important;}
 	.nodiv {width:0px;overflow:hidden);}
 	.notext {opacity:0;filter:alpha(opacity=0);}
+	.kbBtn { width:5vw; height:5vw; max-width:45px; max-height:45px;}
+	#mainContainer {width:100vw;}
+	#mainTable {width:50%; margin:auto;}
+	#keyContainer {visibility:hidden}
+	.half {width:2.5vw; display:inline-block}
+	.row {margin:0.5vw;}
+	.one-and-a-half {width:7.5vw; max-width:68px; max-height:68px;}
+	@media only screen and (max-width: 1030px) {
+		#mainTable {width:98vw;margin-left:18vw}
+		#keyContainer {visibility:visible;width:98vw;margin-left:18vw}
+	}
+	h1 {width:30%;margin:auto;text-align:center;}
+	
 	
 </style>
 
@@ -159,6 +172,16 @@
 
 	}
 
+	function key(c)
+	{
+		document.getElementById("in" + currentTry.toString() + firstUnusedInput().toString()).value = c;
+	}
+	
+	function unkey()
+	{
+		document.getElementById("in" + currentTry.toString() + lastUsedInput().toString()).value = "";
+	}
+
 	function testKey(event) {
 		document.getElementById("in84").focus();
 		if(event.keyCode == 13) {
@@ -248,8 +271,12 @@
 </head>
 
 <body  onload="clearAll()" >
+<div id="topbar">
+	<h1>Wurdle</h1>
+</div>
+<div id="mainContainer">
 
-<table>
+<table id="mainTable">
 <tr>
 <td id="10" class="lettertd"><input type="text" class="myInput" id="in10" maxLength="1" disabled text=""></input></td>
 <td id="11" class="lettertd"><input type="text" class="myInput" id="in11" maxLength="1" disabled text=""></input></td>
@@ -315,5 +342,46 @@
 <div visibility="hidden" class="nodiv"><input id="in84" class="notext" onkeydown="testKey(event, this)"></input></div>
 
 
-<button onClick="testWord()">Test Word</button>
+<div id="keyContainer">
+<div class="row">
+<button class="kbBtn" onClick="key('Q')">Q</button>
+<button class="kbBtn" onClick="key('W')">W</button>
+<button class="kbBtn" onClick="key('E')">E</button>
+<button class="kbBtn" onClick="key('R')">R</button>
+<button class="kbBtn" onClick="key('T')">T</button>
+<button class="kbBtn" onClick="key('Y')">Y</button>
+<button class="kbBtn" onClick="key('U')">U</button>
+<button class="kbBtn" onClick="key('I')">I</button>
+<button class="kbBtn" onClick="key('O')">O</button>
+<button class="kbBtn" onClick="key('P')">P</button>
+</div>
+<div class="row">
+<div class="spacer half"></div>
+<button class="kbBtn" onClick="key('A')">A</button>
+<button class="kbBtn" onClick="key('S')">S</button>
+<button class="kbBtn" onClick="key('D')">D</button>
+<button class="kbBtn" onClick="key('F')">F</button>
+<button class="kbBtn" onClick="key('G')">G</button>
+<button class="kbBtn" onClick="key('H')">H</button>
+<button class="kbBtn" onClick="key('J')">J</button>
+<button class="kbBtn" onClick="key('K')">J</button>
+<button class="kbBtn" onClick="key('L')">L</button>
+<div class="spacer half"></div>
+</div>
+<div class="row">
+<button class="kbBtn one-and-a-half" onClick="testWord()">enter</button>
+<button class="kbBtn" onClick="key('Z')">Z</button>
+<button class="kbBtn" onClick="key('X')">X</button>
+<button class="kbBtn" onClick="key('C')">C</button>
+<button class="kbBtn" onClick="key('V')">V</button>
+<button class="kbBtn" onClick="key('B')">B</button>
+<button class="kbBtn" onClick="key('N')">N</button>
+<button class="kbBtn" onClick="key('M')">M</button>
+<button class="kbBtn one-and-a-half" nClick="unkey()">←</button></div>
+
+
+
+
+
+</div>
 </body></html>
