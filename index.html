@@ -16,10 +16,13 @@
 	#keyContainer {visibility:hidden;margin:auto;}
 	.half {width:2.5vw; display:inline-block}
 	.row {margin:0.5vw;}
-	.one-and-a-half {width:15vw; max-width:68px; max-height:68px;}
+	.one-and-a-half {width:15vw; max-width:68px; max-height:45px;}
 	@media only screen and (max-aspect-ratio:1/1 ) {
-		#mainTable {width:98vw;margin:2vw;}
+		
 		#keyContainer {visibility:visible;width:98vw;margin:auto;margin-left:6vw;}
+	}
+	@media only screen and (max-width:645px ) {
+		#mainTable {width:98vw;margin:2vw;}
 	}
 	h1 {width:30%;margin:auto;text-align:center;}
 	
