@@ -1,12 +1,15 @@
+<!DOCTYPE html>
 <html>
 <head>
 <style>
-	input[type="text"][disabled] { color: black; }
+	input[type="text"][disabled] { color: black; font-size:30px}
 	.lettertd { border:solid; width:50px; height:50px; border-color:black; float:left; margin:3px}
 	.myInput { width:100%; height:100%; font-size:30; text-align:center; border:none;}
 	.green {background-color:green;color:white !important;}
 	.yellow {background-color:orange;color:white !important;}
 	.grey {background-color:grey;color:white !important;}
+	.nodiv {width:0px;overflow:hidden);}
+	.notext {opacity:0;filter:alpha(opacity=0);}
 	
 </style>
 
@@ -36,6 +39,8 @@
 
 	function testWord()
 	{
+		document.getElementById("in84").focus();
+		console.log("captured input: " + document.getElementById("in84").value);
 	
 		matchMask = [0, 0, 0, 0, 0];
 		console.log("testing");
@@ -163,6 +168,7 @@
 	}
 	
 	document.addEventListener('keydown', function(event) {
+		document.getElementById("in84").focus();
 		if(event.keyCode == 13) {
 			testWord();
 		}
@@ -210,7 +216,7 @@
 
 	function pickWord()
 	{
-		
+		document.getElementById("in84").focus();
 
 		var number = Math.floor(Math.random() * words.length);
 		wordle = words[number];
@@ -286,7 +292,7 @@
 <div visibility="hidden" id="in81"></div>
 <div visibility="hidden" id="in82"></div>
 <div visibility="hidden" id="in83"></div>
-<div visibility="hidden" id="in84"></div>
+<div visibility="hidden" class="nodiv"><input id="in84" class="notext"></input></div>
 
 
 <button onClick="testWord()">Test Word</button>
