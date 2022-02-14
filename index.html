@@ -13,16 +13,17 @@
 	.kbBtn { width:7vw; height:7vw; max-width:45px; max-height:45px;}
 	#mainContainer {width:100vw;}
 	#mainTable {margin:auto;}
-	#keyContainer {visibility:hidden;margin:auto;}
+	#keyContainer {visibility:hidden;width:98vw;margin:auto;}
 	.half {width:2.5vw; display:inline-block}
 	.row {margin:0.5vw;}
 	.one-and-a-half {width:15vw; max-width:68px; max-height:45px;}
 	@media only screen and (max-aspect-ratio:1/1 ) {
+		#keyContainer {visibility:visible;margin-left:10vw;}
 		
-		#keyContainer {visibility:visible;width:98vw;margin:auto;margin-left:6vw;}
 	}
 	@media only screen and (max-width:645px ) {
 		#mainTable {width:98vw;margin:2vw;}
+		#keyContainer {visibility:visible;width:98vw;margin:auto;}
 	}
 	h1 {width:30%;margin:auto;text-align:center;}
 	
@@ -380,7 +381,7 @@
 <button class="kbBtn" onClick="key('B')">B</button>
 <button class="kbBtn" onClick="key('N')">N</button>
 <button class="kbBtn" onClick="key('M')">M</button>
-<button class="kbBtn one-and-a-half" nClick="unkey()">←</button></div>
+<button class="kbBtn one-and-a-half" onClick="unkey()">←</button></div>
 
 
 
