@@ -10,20 +10,20 @@
 	.grey {background-color:grey;color:white !important;}
 	.nodiv {width:0px;overflow:hidden);}
 	.notext {opacity:0;filter:alpha(opacity=0);}
-	.kbBtn { width:7vw; height:7vw; max-width:45px; max-height:45px;}
-	#mainContainer {width:100vw;}
+	.kbBtn { width:8vw; height:8vw;margin:0.25vw}
+	#mainContainer {width:100vw;margin:auto}
 	#mainTable {margin:auto;}
-	#keyContainer {visibility:hidden;width:98vw;margin:auto;}
-	.half {width:2.5vw; display:inline-block}
-	.row {margin:0.5vw;}
-	.one-and-a-half {width:15vw; max-width:68px; max-height:45px;}
+	#keyContainer {visibility:hidden;margin:auto;width:95%}
+	.half {width:4vw; display:inline-block}
+	.row {width:99%;margin:auto;}
+	.one-and-a-half {width:12vw;}
 	@media only screen and (max-aspect-ratio:1/1 ) {
-		#keyContainer {visibility:visible;margin-left:10vw;}
-		
+		#keyContainer {visibility:visible;padding-left:2vw;position:absolute;left:50%;transform: translate(-50%, 0%);}
+		.lettertd { border:solid; width:16vw;height:16vw; max-width:150px; max-height:150px; border-color:black; float:left; margin:0.2vw}	
 	}
-	@media only screen and (max-width:645px ) {
-		#mainTable {width:98vw;margin:2vw;}
-		#keyContainer {visibility:visible;width:98vw;margin:auto;}
+	@media only screen and (min-aspect-ratio:1/1 ) {
+		#keyContainer {visibility:hidden;padding-left:2vw;position:absolute;left:50%;transform: translate(-50%, -100%);}
+		.kbBtn { width:8vw; height:8vw;margin:0.25vw}
 	}
 	h1 {width:30%;margin:auto;text-align:center;}
 	
