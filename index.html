@@ -116,27 +116,35 @@
 		currentTry++;
 		
 		// end conditions
+		
 		if (wordle.toUpperCase() == myWord.toUpperCase())
 		{
 			switch(currentTry)
 			{
 				case 2:
+					
 					alert("Insanity! Nice work!"); break;
 				case 3:
+					
 					alert("Very impressive!"); break;
 				case 4:
+					
 					alert("Good work!"); break;
 				case 5:
+					
 					alert("Nicely done!"); break;
 				case 6:
+					
 					alert("Cutting it close!"); break;
 				case 7:
+					
 					alert("That was too close!"); break;
 					
 			}
 		}
 		else if (currentTry > 6)
 		{
+			
 				alert("Oh no! The word was " + wordle.toUpperCase() + "...");
 		}
 	}
@@ -152,6 +160,7 @@
 
 				document.getElementById("in" + t.toString() + i.toString()).classList.add("green");
 				document.getElementById("in" + t.toString() + i.toString()).setAttribute("disabled","thisDoesNothing");
+				setTimeout(() => {  console.log("green!"); }, 200);
 				//document.getElementById("in" + (t+1).toString() + i.toString()).removeAttribute("disabled");
 				// green
 			}
@@ -160,6 +169,7 @@
 
 				document.getElementById("in" + t.toString() + i.toString()).classList.add("yellow");
 				document.getElementById("in" + t.toString() + i.toString()).setAttribute("disabled","thisDoesNothing");
+				setTimeout(() => {  console.log("yellow!"); }, 200);
 				//document.getElementById("in" + (t+1).toString() + i.toString()).removeAttribute("disabled");
 				// yellow
 			}
@@ -168,12 +178,16 @@
 
 				document.getElementById("in" + t.toString() + i.toString()).classList.add("grey");
 				document.getElementById("in" + t.toString() + i.toString()).setAttribute("disabled","thisDoesNothing");
+				setTimeout(() => {  console.log("grey!"); }, 200);
 				//document.getElementById("in" + (t+1).toString() + i.toString()).removeAttribute("disabled");
 				// grey
 			}
 		}
 
-
+		wait(100);
+		console.log("test");
+		wait(100);
+		
 	}
 
 	function key(c)
